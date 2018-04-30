@@ -1,0 +1,24 @@
+<% wrap_layout :site do %>
+  <%= javascript_include_tag "./content.js" %>
+
+  <article class="post">
+    <header>
+      <h1><%= current_article.title %></h1>
+      <h2 class="date"><%= current_article.date.strftime('%e %B %Y') %></h2>
+    </header>
+    <section id="post-body">
+      <%= yield %>
+    </section>
+  </article>
+
+  <footer id="post-meta">
+    <a href="/">
+      <img class="avatar" src="<%= url_for "/images/avatar.png" %>" alt="Avatar">
+      <div class="details">
+        <div class="dark"><%= config[:site_author] %></div>
+        <div class="light"><%= config[:site_subtitle] %></div>
+      </div>
+    </a>
+  </footer>
+
+<% end %>
